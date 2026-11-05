@@ -1,0 +1,23 @@
+name: DurenMVC
+
+services:
+  db:
+    image: postgres:17
+    container_name: DurenMVC-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: DurenMVC
+      POSTGRES_PASSWORD: duren_dev
+      POSTGRES_DB: DurenMVC
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U DurenMVC -d DurenMVC"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  pgdata:
