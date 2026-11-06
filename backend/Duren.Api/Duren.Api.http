@@ -1,0 +1,6 @@
+@Duren.Api_HostAddress = http://localhost:5147
+
+GET {{Duren.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
